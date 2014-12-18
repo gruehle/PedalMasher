@@ -1,5 +1,5 @@
 /*jshint browser:true, globalstrict:true */
-/*globals $, _, Backbone */
+/*globals $, _, Backbone, ga */
 
 'use strict';
 
@@ -81,6 +81,10 @@ function getLabel(value) {
     return value;
 }
 
+function sendGAEvent(category, action, label) {
+    ga('send', 'event', category, action, label);
+}
+
 // MODELS
 var Build = Backbone.Model.extend({
     defaults: {
@@ -142,6 +146,8 @@ var DropDown = Backbone.View.extend({
                 self.close();
                 self.render();
                 self.trigger('change');
+                
+                sendGAEvent('dropdown', 'select', e.target.dataset.preset);
             });
             
             // Set the styles and show
@@ -155,6 +161,8 @@ var DropDown = Backbone.View.extend({
             this.boundCloseDropdown = this.closeDropDown.bind(this, this);
             document.addEventListener('mousedown', this.boundCloseDropdown, true);
             window.addEventListener('resize', this.boundCloseDropdown);
+            
+            sendGAEvent('dropdown', 'open', this.opts.template);
         }
     },
     close: function () {
@@ -299,6 +307,7 @@ var BuildView = Backbone.View.extend({
         'focusout': function (e) {
             if (e.target.classList.contains('name')) {
                 this.model.set('name', e.target.innerText);
+                sendGAEvent('build', 'rename');
             }
         }
     },
@@ -342,6 +351,7 @@ var BuildListView = Backbone.View.extend({
             .click(function () {
                 this.collection.add(new Build());
                 this.render();
+                sendGAEvent('build', 'create');
             }.bind(this))
             .appendTo(this.$el);
     }
