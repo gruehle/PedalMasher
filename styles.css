@@ -34,9 +34,6 @@ table {
 	border-spacing: 0;
 }
 
-/* FONTS */
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
-
 /* TAG selectors */
 body {
     font: 19px/1.36 'Source Sans Pro', sans-serif;
