@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PedalMasher</title>
+        
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+    
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>        
+        <!-- Background -->
+        <div class="bg-img"></div>
+        
+        <!-- Header -->
+        <div class="header overlay">
+            <img class="logo semi-trans" src="img/gear.png">
+            <img class="semi-trans" src="img/logo.png">
+        </div>
+        
+        <!-- Body -->
+        <div class="content overlay">
+            <h1 class="semi-trans text-shadow">Gear Calculator</h1>
+            <div id="build-list">
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <!--
+        <div class="footer">
+            <div class="img-credits">
+                <span class="img-name">"Wheelie Portrait"</span> by
+                <span class="img-author">Zach Dischner</span>
+            </div>
+        </div>
+        -->
+        
+        <!-- Templates -->
+        <script type="text/html" id="build-template">
+            <span class="name" contenteditable="true" ><%=name%></span>
+            <div class="config">
+                <!-- Controls go here -->
+            </div>
+            <!-- Table goes here -->
+        </script>
+        
+        <script type="text/html" id="wheel-dropdown">
+            <div class="dropdown-item col1" data-preset="wheel_26"></div>
+            <div class="dropdown-item col1" data-preset="wheel_275"></div>
+            <div class="dropdown-item col1" data-preset="wheel_29"></div>
+        </script>
+        
+        <script type="text/html" id="ring-dropdown">
+            <div class="dropdown-item-title">Single</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col5" data-preset="single_28"></div>
+                <div class="dropdown-item col5" data-preset="single_30"></div>
+                <div class="dropdown-item col5" data-preset="single_32"></div>
+                <div class="dropdown-item col5" data-preset="single_34"></div>
+                <div class="dropdown-item col5" data-preset="single_36"></div>
+            </div>
+
+            <div class="dropdown-item-title">Double</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col4" data-preset="double_22_36"></div>
+                <div class="dropdown-item col4" data-preset="double_24_38"></div>
+                <div class="dropdown-item col4" data-preset="double_26_38"></div>
+                <div class="dropdown-item col4" data-preset="double_28_40"></div>
+            </div>
+
+            <div class="dropdown-item-title">Triple</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col3" data-preset="triple_22_40"></div>
+                <div class="dropdown-item col3" data-preset="triple_22_44"></div>
+                <div class="dropdown-item col3" data-preset="triple_24_42"></div>
+            </div>
+            
+            <!--
+            <div class="dropdown-item-title">Custom</div>
+            <div class="dropdown-row">
+                <input class="dropdown-input col3"></input>
+                <input class="dropdown-input col3"></input>
+                <input class="dropdown-input col3"></input>
+            </div>
+            -->
+        </script>
+        
+        <script type="text/html" id="sprocket-dropdown">
+            <div class="dropdown-item-title">11 Speed</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col3" data-preset="sp11_10_42"></div>
+                <div class="dropdown-item col3" data-preset="sp11_11_40"></div>
+            </div>
+
+            <div class="dropdown-item-title">10 Speed</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col3" data-preset="sp10_11_32"></div>
+                <div class="dropdown-item col3" data-preset="sp10_11_34"></div>
+                <div class="dropdown-item col3" data-preset="sp10_11_36"></div>
+            </div>
+
+            <div class="dropdown-item-title">9 Speed</div>
+            <div class="dropdown-row">
+                <div class="dropdown-item col3" data-preset="sp9_11_32"></div>
+                <div class="dropdown-item col3" data-preset="sp9_11_34"></div>
+                <div class="dropdown-item col3" data-preset="sp9_12_36"></div>
+            </div>
+            
+            <!--
+            <div class="dropdown-item-title">Custom</div>
+            <div class="dropdown-row">
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+                <input class="dropdown-input col11"></input>
+            </div>
+            -->
+        </script>
+                
+        <!-- Scripts -->
+        <script src="vendor/zepto-min.js"></script>
+        <script src="vendor/underscore-min.js"></script>
+        <script src="vendor/backbone-min.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+</html>

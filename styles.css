@@ -1,0 +1,314 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, em, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* FONTS */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+
+/* TAG selectors */
+body {
+    font: 19px/1.36 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    color: #222;
+
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    font-weight: 400;
+    color: #777;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+table {
+    background: rgba(255, 255, 255, 0.4);
+    margin: 7px auto;
+    box-shadow: 0 0 3px #ccc;
+}
+
+th {
+    font-weight: 400;
+    padding: 0 5px;
+}
+
+td {
+    padding: 3px 5px;
+    text-align: right;
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    border-radius: 6px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 7px 20px;
+    transition: background .1s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.btn:active {
+    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* MODIFIERS */
+.bold {
+    font-weight: 600;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.semi-trans {
+    opacity: 0.6;
+}
+
+.text-shadow {
+    text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* LAYOUT */
+.col1 {
+    width: 100%;
+}
+
+.col2 {
+    width: 48%;
+}
+
+.col3 {
+    width: 32.7%;
+}
+
+.col4 {
+    width: 24.2%;
+}
+
+.col5 {
+    width: 19.2%;
+}
+
+.col11 {
+    width: 8.3%;
+    min-width: 10px;
+}
+
+/* CONTAINERS */
+#build-list {
+    position: relative;
+    width: 575px;
+    margin: auto;
+}
+
+/* COMPONENTS */
+.bg-img {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(img/bg-1024.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.drop-down-btn {
+    display: inline-block;
+    border-radius: 5px 5px 0 0;
+    padding: 0 5px;
+    font-size: 1.2em;
+    transition: background .1s ease;
+}
+
+.drop-down-btn.selected,
+.drop-down-btn.selected:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.drop-down-btn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.drop-down-btn-img {
+    position: relative;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    margin-right: 3px;
+}
+
+.dropdown {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 5px 0 5px 5px;
+    z-index: 10;
+    min-width: 80px;
+    min-height: 80px;
+    opacity: 0;
+    transition: opacity .1s ease;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-row {
+    padding-left: 3px;
+}
+
+.dropdown-item,
+.dropdown-input {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 0 7px;
+}
+
+.dropdown-item {
+    border-radius: 5px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-row.selected,
+.dropdown-item.selected,
+.dropdown-item.selected:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-item-title {
+    padding-left: 7px;
+    font-size: 1.5em;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-input {
+    margin: 7px 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+.header {
+    padding-top: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+    position: relative;
+    top: -6px;
+    width: 43px;
+    margin-left: 15px;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.content {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.build {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.name {
+    font-size: 1.8em;
+}
+
+.config {
+    position: absolute;
+    right: 7px;
+    top: 9px;
+}
+
+.btn-new-build {
+    display: block;
+    margin: 30px auto 12px;
+    width: 200px;
+}
+
+.info-img {
+    position: relative;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    margin-right: 3px;
+    margin-left: 5px;
+}
+
+.footer {
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+}
+
+.img-credits {
+    color: white;
+    font-size: 0.8em;
+    opacity: 0.4;
+    text-align: right;
+}
+
