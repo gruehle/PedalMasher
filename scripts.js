@@ -127,7 +127,7 @@ var DropDown = Backbone.View.extend({
             this.$dropdown.find('[data-preset]').forEach(function (item) {
                 var value = presets[item.dataset.preset];
                 item.dataset.value = JSON.stringify(value);
-                item.innerText = getLabel(value);
+                item.innerHTML = getLabel(value);
             });
             
             // Highlight selected item
@@ -296,7 +296,7 @@ var BuildView = Backbone.View.extend({
                     e.target.classList.contains('name')) {
                 
                 if (e.keyCode === 27) {
-                    document.activeElement.innerText = this.model.get('name');
+                    document.activeElement.innerHTML = this.model.get('name');
                 }
                 
                 clearFocus();
@@ -306,7 +306,7 @@ var BuildView = Backbone.View.extend({
         },
         'focusout': function (e) {
             if (e.target.classList.contains('name')) {
-                this.model.set('name', e.target.innerText);
+                this.model.set('name', e.target.innerHTML);
                 sendGAEvent('build', 'rename');
             }
         }
