@@ -251,6 +251,7 @@ td {
 
 .content-wrapper {
     position: absolute;
+    width: 100%;
     max-width: 800px;
     left: 0;
     right: 0;
