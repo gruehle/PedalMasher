@@ -39,7 +39,7 @@ body {
     font: 19px/1.36 'Source Sans Pro', sans-serif;
     font-weight: 300;
     color: #222;
-
+    
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
@@ -141,7 +141,7 @@ td {
 /* CONTAINERS */
 #build-list {
     position: relative;
-    width: 575px;
+    max-width: 575px;
     margin: auto;
 }
 
@@ -186,9 +186,8 @@ td {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.95);
     border-radius: 5px 0 5px 5px;
-    z-index: 10;
     min-width: 80px;
-    min-height: 80px;
+    z-index: 10;
     opacity: 0;
     transition: opacity .1s ease;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
@@ -250,15 +249,16 @@ td {
     background: rgba(255, 255, 255, 0.6);
 }
 
-.content {
+.content-wrapper {
     position: absolute;
-    left: 20px;
-    right: 20px;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    left: 0;
+    right: 0;
+    margin: 1em auto 2em;
+}
+
+.content {
+    margin: 0 1em;
     border-radius: 8px;
     padding: 10px;
 }
@@ -319,3 +319,30 @@ td {
     text-align: right;
 }
 
+@media (max-width: 650px) {
+    body {
+        font-size: 17px;
+    }
+    
+    .config {
+        top: 7px;
+    }
+}
+
+@media (max-width: 575px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .title {
+        width: 260px;
+    }
+    
+    .logo {
+        width: 33px;
+    }
+    
+    .config {
+        top: 5px;
+    }
+}

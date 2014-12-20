@@ -266,7 +266,7 @@ var BuildView = Backbone.View.extend({
         
         this.wheelDropdown = new DropDown({
             template: 'wheel-dropdown',
-            width: '75px',
+            width: '3.95em',
             imgSrc: 'img/wheel.svg'
         }).on('change', function () {
             this.model.set('wheelSize', this.wheelDropdown.opts.value);
@@ -275,7 +275,7 @@ var BuildView = Backbone.View.extend({
         
         this.ringDropdown = new DropDown({
             template: 'ring-dropdown',
-            width: '400px',
+            width: '21em',
             imgSrc: 'img/ring.svg'
         }).on('change', function () {
             this.model.set('rings', this.ringDropdown.opts.value);
@@ -284,7 +284,7 @@ var BuildView = Backbone.View.extend({
         
         this.sprocketDropdown = new DropDown({
             template: 'sprocket-dropdown',
-            width: '475px',
+            width: '25em',
             imgSrc: 'img/sprocket.svg'
         }).on('change', function () {
             this.model.set('sprockets', this.sprocketDropdown.opts.value);
