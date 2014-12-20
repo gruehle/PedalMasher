@@ -260,7 +260,6 @@ var TableView = Backbone.View.extend({
 var BuildView = Backbone.View.extend({
     tagName: 'div',
     className: 'build',
-    template: _.template(document.getElementById('build-template').innerHTML),
     
     initialize: function () {
         this.table = new TableView({model: this.model});
@@ -273,6 +272,7 @@ var BuildView = Backbone.View.extend({
             this.model.set('wheelSize', this.wheelDropdown.opts.value);
             this.render();
         }.bind(this));
+        
         this.ringDropdown = new DropDown({
             template: 'ring-dropdown',
             width: '400px',
@@ -281,6 +281,7 @@ var BuildView = Backbone.View.extend({
             this.model.set('rings', this.ringDropdown.opts.value);
             this.render();
         }.bind(this));
+        
         this.sprocketDropdown = new DropDown({
             template: 'sprocket-dropdown',
             width: '475px',
@@ -290,36 +291,28 @@ var BuildView = Backbone.View.extend({
             this.render();
         }.bind(this));
     },
-    events: {
-        'keydown': function (e) {
-            if ((e.keyCode === 13 || e.keyCode === 27) &&
-                    e.target.classList.contains('name')) {
-                
-                if (e.keyCode === 27) {
-                    document.activeElement.innerHTML = this.model.get('name');
-                }
-                
-                clearFocus();
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        },
-        'focusout': function (e) {
-            if (e.target.classList.contains('name')) {
-                this.model.set('name', e.target.innerHTML);
-                sendGAEvent('build', 'rename');
-            }
-        }
-    },
     render: function () {
         this.wheelDropdown.opts.value = this.model.get('wheelSize');
         this.ringDropdown.opts.value = this.model.get('rings');
         this.sprocketDropdown.opts.value = this.model.get('sprockets');
         
-        this.$el.html(this.template({
-            name:       this.model.get('name'),
-        }));
+        this.$el.html(document.getElementById('build-template').innerHTML);
         
+        this.$el.find('.name')
+            .val(this.model.get('name'))
+            .on('keydown', function (e) {
+                if (e.keyCode === 27) { // esc key
+                    e.target.value = this.model.get('name');
+                }
+                if (e.keyCode === 27 || e.keyCode === 13) {
+                    clearFocus();
+                }
+            }.bind(this))
+            .on('blur', function (e) {
+                this.model.set('name', e.target.value);
+                sendGAEvent('build', 'rename');
+            }.bind(this));
+                   
         this.$el.find('.config')
             .append(this.wheelDropdown.render().$el)
             .append(this.ringDropdown.render().$el)
