@@ -138,13 +138,6 @@ td {
     min-width: 10px;
 }
 
-/* CONTAINERS */
-#build-list {
-    position: relative;
-    max-width: 575px;
-    margin: auto;
-}
-
 /* COMPONENTS */
 .bg-img {
     position: fixed;
@@ -264,10 +257,16 @@ td {
     padding: 10px;
 }
 
+.content-inner {
+    position: relative;
+    max-width: 575px;
+    margin: auto;
+}
+
 .build {
     position: relative;
     width: 100%;
-    margin: 20px auto;
+    margin: 1em auto;
 }
 
 .name {
@@ -355,26 +354,39 @@ td {
 }
 
 @media (max-width: 425px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 410px) {
+    body {
+        font-size: 13.7px;
+    }
+    
+    .content {
+        margin: 0 .5em;
+    }
+}
+
+@media (max-width: 386px) {
+    body {
+        font-size: 13px;
+    }
+    
+    .content {
+        margin: 0;
+    }
+}
+
+@media (max-width: 367px) {
     table {
         font-size: 0.9em;
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 345px) {
     table {
-        font-size: 0.7em;
+        font-size: 0.8em;
     }
 }
-
-@media (max-width: 370px) {
-    table {
-        font-size: 0.65em;
-    }
-}
-
-@media (max-width: 340px) {
-    table {
-        font-size: 0.55em;
-    }
-}
-

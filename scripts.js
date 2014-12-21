@@ -45,7 +45,7 @@ var presets = {
 
 var configs = [
     {
-        name: 'Shimano 2x10',
+        name: 'Standard 2x10',
         wheelSize: 29,
         rings: presets.double_24_38,
         sprockets: presets.sp10_11_36
