@@ -158,6 +158,11 @@ var DropDown = Backbone.View.extend({
                 opacity: 1
             });
             
+            // Make sure it is on screen
+            if (this.$dropdown.offset().left < 5) {
+                this.$dropdown.css({left: '7px', borderTopRightRadius: '5px'});
+            }
+            
             this.boundCloseDropdown = this.closeDropDown.bind(this, this);
             document.addEventListener('mousedown', this.boundCloseDropdown, true);
             window.addEventListener('resize', this.boundCloseDropdown);

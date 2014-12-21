@@ -277,7 +277,7 @@ td {
     background: transparent;
     border: none;
     outline: none;
-    transition: all 0.3s ease-in-out;  
+    transition: box-shadow 0.3s ease-in-out;  
 }
  
 .name:focus {
@@ -347,3 +347,34 @@ td {
         top: 5px;
     }
 }
+
+@media (max-width: 500px) {
+    .config {
+        position: static;
+    }
+}
+
+@media (max-width: 425px) {
+    table {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 400px) {
+    table {
+        font-size: 0.7em;
+    }
+}
+
+@media (max-width: 370px) {
+    table {
+        font-size: 0.65em;
+    }
+}
+
+@media (max-width: 340px) {
+    table {
+        font-size: 0.55em;
+    }
+}
+
