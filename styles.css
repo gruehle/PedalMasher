@@ -292,7 +292,7 @@ a:hover {
     background: transparent;
     border: none;
     outline: none;
-    padding: 0;
+    padding: 0 5px;
     transition: box-shadow 0.3s ease-in-out;  
 }
  
