@@ -73,6 +73,15 @@ td {
     text-align: right;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .btn {
     display: inline-block;
     text-align: center;
@@ -88,6 +97,7 @@ td {
 
 .btn:hover {
     background: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
 }
 
 .btn:active {
@@ -248,11 +258,11 @@ td {
     max-width: 800px;
     left: 0;
     right: 0;
-    margin: 1em auto 2em;
+    margin: 1em auto 0;
 }
 
 .content {
-    margin: 0 1em;
+    margin: 0 1em 2.7em;
     border-radius: 8px;
     padding: 10px;
 }
@@ -306,16 +316,23 @@ td {
 
 .footer {
     position: absolute;
-    box-sizing: border-box;
+    left: 0;
+    right: 0;
     bottom: 0;
-    width: 100%;
-    padding: 12px;
+    
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8em;
+    padding: 0.5em 2em;
+}
+
+.copyright {
+    display: inline-block;
 }
 
 .img-credits {
-    color: white;
-    font-size: 0.8em;
-    opacity: 0.4;
+    float: right;
+    display: inline-block;
     text-align: right;
 }
 
@@ -365,7 +382,7 @@ td {
     }
     
     .content {
-        margin: 0 .5em;
+        margin: 0 .5em 3.5em;
     }
 }
 
@@ -375,7 +392,7 @@ td {
     }
     
     .content {
-        margin: 0;
+        margin: 0 0 3.5em;
     }
 }
 

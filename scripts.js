@@ -361,3 +361,11 @@ configs.forEach(function (config) {
 });
 
 new BuildListView({collection: buildList}).render();
+
+function handleResize(e) {
+    var content = document.getElementById('content');
+    content.style.minHeight = (window.innerHeight - content.getBoundingClientRect().top) + 'px';
+}
+
+window.addEventListener('resize', _.debounce(handleResize, 100));
+handleResize();

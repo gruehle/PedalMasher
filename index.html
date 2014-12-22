@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>PedalMasher</title>
+        <title>PedalMasher - Gear Calculator</title>
         
         <meta charset="utf-8">
         <meta name=viewport content="width=device-width, initial-scale=1">
@@ -14,35 +14,37 @@
         <div class="bg-img"></div>
         
         <!-- Header -->
-        <div class="header overlay">
+        <div id="header" class="header overlay">
             <img class="logo semi-trans" src="img/gear.png" alt="logo">
             <img class="title semi-trans" src="img/logo.png" alt="title">
         </div>
         
         <!-- Body -->
-        <div class="content-wrapper">
+        <div id="content" class="content-wrapper">
             <div class="content overlay">
                 <h1 class="semi-trans text-shadow">Gear Calculator</h1>
                 <div class="content-inner">
-                    See the distance traveled, per pedal revolution, for every gear.
+                    Shows the distance traveled per pedal revolution for every gear.
                     Tap the wheel and gear icons to make changes. Tap on the 
                     name to rename.
                 </div>
                 <div id="build-list" class="content-inner">
                 </div>
             </div>
-        </div>
-        
-        <!-- Footer -->
-        <!--
-        <div class="footer">
-            <div class="img-credits">
-                <span class="img-name">"Wheelie Portrait"</span> by
-                <span class="img-author">Zach Dischner</span>
+            <div class="footer">
+                <div class="copyright">
+                    ©2014 <a href="http://twitter.com/GlennRuehle" target="_blank">Glenn Ruehle</a>
+                </div>
+                <div class="img-credits">
+                    Photo: 
+                    <a class="img-name" href="https://www.flickr.com/photos/zachd1_618/14339201176/" target="_blank">
+                        "Wheelie Portrait"</a> by
+                    <a class="img-author" href="https://www.flickr.com/photos/zachd1_618/" target="_blank">
+                        Zach Dischner</a>
+                </div>
             </div>
         </div>
-        -->
-        
+                
         <!-- Templates -->
         <script type="text/html" id="build-template">
             <input type="text" class="name" value="<%=name%>"></input>
