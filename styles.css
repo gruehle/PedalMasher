@@ -44,6 +44,8 @@ body {
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+    
+    -webkit-tap-highlight-color: transparent;
 }
 
 h1 {
@@ -291,6 +293,7 @@ a:hover {
     border: none;
     outline: none;
     transition: box-shadow 0.3s ease-in-out;  
+    -webkit-appearance: none;
 }
  
 .name:focus {
