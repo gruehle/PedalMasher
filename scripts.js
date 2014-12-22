@@ -138,17 +138,17 @@ var DropDown = Backbone.View.extend({
             });
             
             // Add click handler
-            this.$dropdown.on('mousedown .dropdown-item', function (e) {
-                e.stopPropagation();
-                e.preventDefault();
-                
-                self.opts.value = JSON.parse(e.target.dataset.value);
-                self.close();
-                self.render();
-                self.trigger('change');
-                
-                sendGAEvent('dropdown', 'select', e.target.dataset.preset);
-            });
+            this.$dropdown.on('click .dropdown-item', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    self.opts.value = JSON.parse(e.target.dataset.value);
+                    self.close();
+                    self.render();
+                    self.trigger('change');
+
+                    sendGAEvent('dropdown', 'select', e.target.dataset.preset);
+                });
             
             // Set the styles and show
             this.$dropdown.css({
@@ -164,7 +164,7 @@ var DropDown = Backbone.View.extend({
             }
             
             this.boundCloseDropdown = this.closeDropDown.bind(this, this);
-            document.addEventListener('mousedown', this.boundCloseDropdown, true);
+            document.addEventListener('click', this.boundCloseDropdown, true);
             window.addEventListener('resize', this.boundCloseDropdown);
             
             sendGAEvent('dropdown', 'open', this.opts.template);
@@ -178,7 +178,7 @@ var DropDown = Backbone.View.extend({
             this.$dropdown.remove();
             this.$dropdown = null;
             
-            document.removeEventListener('mousedown', this.boundCloseDropdown, true);
+            document.removeEventListener('click', this.boundCloseDropdown, true);
             window.removeEventListener('resize', this.boundCloseDropdown);
         }
     },
@@ -190,11 +190,15 @@ var DropDown = Backbone.View.extend({
         }
     },
     closeDropDown: function (dropDown, e) {
+        if (e && (this.$el.get(0).contains(e.target) || this.$dropdown.get(0).contains(e.target))) {
+            return;
+        }
+        
         if (dropDown && dropDown.close) {
             dropDown.close();
         }
     },
-    mouseDownHandler: function (e) {
+    clickHandler: function (e) {
         if (e.currentTarget.classList &&
             e.currentTarget.classList.contains('drop-down-btn')) {
             this.toggle();
@@ -203,7 +207,7 @@ var DropDown = Backbone.View.extend({
         }
     },
     events: {
-        'mousedown': 'mouseDownHandler'
+        'click': 'clickHandler'
     },
     render: function () {
         var imgSrc = this.opts.imgSrc;
