@@ -292,8 +292,8 @@ a:hover {
     background: transparent;
     border: none;
     outline: none;
+    padding: 0;
     transition: box-shadow 0.3s ease-in-out;  
-    -webkit-appearance: none;
 }
  
 .name:focus {
