@@ -255,9 +255,12 @@ var TableView = Backbone.View.extend({
             var data = [];
             sprockets.forEach(function (sprocket) {
                 var val = ring /sprocket;       // Ratio
+                var resolution = 1;
                 val *= (wheelSize * Math.PI);   // Convert to distance (inches)
                 val /= 12;                      // Convert to feet
-                data.push(val.toFixed(1));
+                //val /= 39.37;                   // Convert to meters
+                //resolution = 2;                 // Meters show 2 digits
+                data.push(val.toFixed(resolution));
             });
             this.$el.append(this._makeRow(ring, data));
         }.bind(this));

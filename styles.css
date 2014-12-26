@@ -292,7 +292,7 @@ a:hover {
     background: transparent;
     border: none;
     outline: none;
-    padding: 0 5px;
+    padding: 0;
     transition: box-shadow 0.3s ease-in-out;  
 }
  
@@ -374,6 +374,10 @@ a:hover {
 @media (max-width: 500px) {
     .config {
         position: static;
+    }
+    
+    .name {
+        padding: 0 5px;
     }
 }
 
