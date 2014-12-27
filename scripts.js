@@ -130,6 +130,11 @@ var DropDown = Backbone.View.extend({
                 item.innerHTML = getLabel(value);
             });
             
+            // Fill the custom settings (if present)
+            this.$dropdown.find('.dropdown-input').forEach(function (item, i) {
+                item.value = this.opts.value[i] || '';
+            }.bind(this));
+            
             // Highlight selected item
             this.$dropdown.find('.dropdown-item').forEach(function (item) {
                 if (item.dataset.value == JSON.stringify(self.opts.value)) {
@@ -138,17 +143,17 @@ var DropDown = Backbone.View.extend({
             });
             
             // Add click handler
-            this.$dropdown.on('click .dropdown-item', function (e) {
-                    e.stopPropagation();
-                    e.preventDefault();
+            this.$dropdown.on('click', '.dropdown-item', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
 
-                    self.opts.value = JSON.parse(e.target.dataset.value);
-                    self.close();
-                    self.render();
-                    self.trigger('change');
+                self.opts.value = JSON.parse(e.target.dataset.value);
+                self.close();
+                self.render();
+                self.trigger('change');
 
-                    sendGAEvent('dropdown', 'select', e.target.dataset.preset);
-                });
+                sendGAEvent('dropdown', 'select', e.target.dataset.preset);
+            });
             
             // Set the styles and show
             this.$dropdown.css({
@@ -296,7 +301,7 @@ var BuildView = Backbone.View.extend({
         
         this.sprocketDropdown = new DropDown({
             template: 'sprocket-dropdown',
-            width: '25em',
+            width: '22em',
             imgSrc: 'img/sprocket.svg'
         }).on('change', function () {
             this.model.set('sprockets', this.sprocketDropdown.opts.value);
