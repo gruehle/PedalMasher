@@ -128,6 +128,10 @@ a:hover {
     overflow: hidden;
 }
 
+.ios * {
+    cursor: pointer;
+}
+
 /* LAYOUT */
 .col1 {
     width: 100%;
@@ -366,8 +370,8 @@ a:hover {
     position: fixed;;
     left: 0;
     right: 0;
-    width: 24em;
-    height: 60%;
+    width: 22em;
+    height: 50%;
     max-height: 400px;
     margin: 0 auto;
     padding: 1em;

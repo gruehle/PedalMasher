@@ -443,6 +443,7 @@ var BuildListView = Backbone.View.extend({
     }
 });
 
+// Make build models and views
 var buildList = new BuildList();
 configs.forEach(function (config) {
     buildList.add(new Build(config));
@@ -450,6 +451,7 @@ configs.forEach(function (config) {
 
 new BuildListView({collection: buildList}).render();
 
+// Resize handler to update footer positioning
 function handleResize(e) {
     var content = document.getElementById('content');
     content.style.minHeight = (window.innerHeight - content.getBoundingClientRect().top) + 'px';
@@ -457,3 +459,8 @@ function handleResize(e) {
 
 window.addEventListener('resize', _.debounce(handleResize, 100));
 handleResize();
+
+// iOS detection
+if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
+    document.body.classList.add('ios');
+}
