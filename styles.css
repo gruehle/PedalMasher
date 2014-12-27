@@ -84,6 +84,20 @@ a:hover {
     text-decoration: underline;
 }
 
+input[type=text] {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    padding: 0;
+    transition: box-shadow 0.1s ease-in-out;  
+}
+
+input[type=text]:focus {
+    box-shadow: 0 0 3px 1px rgba(0, 126, 255, 0.7), inset 0 0 3px rgba(0, 126, 255, 0.7);
+}
+
 .btn {
     display: inline-block;
     text-align: center;
@@ -219,7 +233,9 @@ a:hover {
     padding: 0;
 }
 
-.dropdown-item {
+.dropdown-item,
+.dropdown-row,
+.dropdown-input {
     border-radius: 5px;
 }
 
@@ -231,11 +247,14 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.dropdown-row.selected,
 .dropdown-item.selected,
 .dropdown-item.selected:hover {
     background-color: rgba(0, 0, 0, 0.7);
     color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-row.selected {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .dropdown-item-title {
@@ -244,14 +263,14 @@ a:hover {
     color: rgba(0, 0, 0, 0.3);
 }
 
-.dropdown-input {
+input[type=text].dropdown-input {
     margin: 7px 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
     font-size: 1em;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-    outline: none;
+}
+
+input[type=text].dropdown-input:focus {
+    border: none;
 }
 
 .header {
@@ -298,18 +317,10 @@ a:hover {
 }
 
 .name {
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.8em;
-    font-weight: 300;
     background: transparent;
-    border: none;
     outline: none;
     padding: 0;
-    transition: box-shadow 0.3s ease-in-out;  
-}
- 
-.name:focus {
-    box-shadow: 0 0 3px 1px rgba(0, 126, 255, 0.7), inset 0 0 3px rgba(0, 126, 255, 0.7);
 }
 
 .config {

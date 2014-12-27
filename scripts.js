@@ -132,8 +132,8 @@ var DropDown = Backbone.View.extend({
             
             // Fill the custom settings (if present)
             this.$dropdown.find('.dropdown-input').forEach(function (item, i) {
-                item.value = this.opts.value[i] || '';
-            }.bind(this));
+                item.value = self.opts.value[i] || '';
+            });
             
             // Highlight selected item
             this.$dropdown.find('.dropdown-item').forEach(function (item) {
@@ -141,13 +141,17 @@ var DropDown = Backbone.View.extend({
                     item.classList.add('selected');
                 }
             });
+            if (this.$dropdown.find('.dropdown-item.selected').length === 0) {
+                this.$dropdown.find('.dropdown-custom-row').addClass('selected');
+            }
             
-            // Add click handler
+            // Add click handler for items
             this.$dropdown.on('click', '.dropdown-item', function (e) {
                 e.stopPropagation();
                 e.preventDefault();
 
                 self.opts.value = JSON.parse(e.target.dataset.value);
+                self.isCustomValue = false;
                 self.close();
                 self.render();
                 self.trigger('change');
@@ -155,6 +159,24 @@ var DropDown = Backbone.View.extend({
                 sendGAEvent('dropdown', 'select', e.target.dataset.preset);
             });
             
+            // Add handlers for custom inputs
+            this.$dropdown
+                .on('click', '.dropdown-input', function (e) {
+                    // Unselect any items
+                    self.$dropdown.find('.dropdown-item').removeClass('selected');
+                    self.$dropdown.find('.dropdown-custom-row').addClass('selected');
+                    self.isCustomValue = true;
+                    e.target.setSelectionRange(0, e.target.value.length);
+                })
+                .on('keydown', '.dropdown-input', function (e) {
+                    if (e.keyCode === 27) {
+                        self.isCustomValue = false;
+                    }
+                    if (e.keyCode === 13 || e.keyCode === 27) {
+                        self.close();
+                    }
+                });
+                              
             // Set the styles and show
             this.$dropdown.css({
                 width: this.opts.width,
@@ -180,6 +202,26 @@ var DropDown = Backbone.View.extend({
             this.isOpen = false;
             this.$el.removeClass('selected');
 
+            if (this.isCustomValue) {
+                var newValue = [];
+                this.$dropdown.find('.dropdown-input').forEach(function (item) {
+                    if (item.value) {
+                        var val = parseInt(item.value);
+                        
+                        if (val < 8) val = 8;
+                        if (val > 60) val = 60;
+                        
+                        newValue.push(val);
+                    }
+                });
+                newValue.sort(function (a, b) {return a - b;});
+                this.opts.value = newValue;
+                this.render();
+                this.trigger('change');
+
+                sendGAEvent('dropdown', 'select', newValue);
+           }
+            
             this.$dropdown.remove();
             this.$dropdown = null;
             
