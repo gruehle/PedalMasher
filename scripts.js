@@ -492,8 +492,19 @@ var BuildListView = Backbone.View.extend({
 
 // Make build models and views
 var buildList = new BuildList();
-configs.forEach(function (config) {
+var items = configs;
+if (localStorage.getItem('configs')) {
+    try {
+        items = JSON.parse(localStorage.getItem('configs'));
+    } catch (e) {
+        // Ignore errors. Will fall back to default configs.
+    }
+}
+items.forEach(function (config) {
     buildList.add(new Build(config));
+});
+buildList.on('change add remove', function () {
+    localStorage.setItem('configs', JSON.stringify(buildList));
 });
 
 new BuildListView({collection: buildList}).render();
