@@ -124,6 +124,10 @@ a:hover {
     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 /* LAYOUT */
 .col1 {
     width: 100%;
@@ -306,10 +310,14 @@ a:hover {
     top: 9px;
 }
 
-.btn-new-build {
-    display: block;
-    margin: 30px auto 12px;
-    width: 200px;
+.action-btn {
+    margin: 30px 0 12px;
+    width: 35%;
+}
+
+.btn-delete-build {
+    position: absolute;
+    right: 0;
 }
 
 .info-img {
@@ -341,6 +349,82 @@ a:hover {
     float: right;
     display: inline-block;
     text-align: right;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.delete-dlg {
+    display: none;
+    position: fixed;;
+    left: 0;
+    right: 0;
+    width: 24em;
+    height: 60%;
+    max-height: 400px;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+
+.delete-dlg-contents {
+    font-size: 1.2em;
+}
+
+.delete-dlg-list {
+    position: absolute;
+    overflow: auto;
+    bottom: 4.2em;
+    top: 2.5em;
+    left: 1em;
+    right: 1em;
+}
+
+.delete-dlg-list-item {
+    padding: 0.5em;
+    margin: 2px;
+}
+
+.delete-dlg-list-item.selected {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+}
+
+.delete-item-desc {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.delete-dlg-btns {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+}
+
+.delete-dlg-delete-btn {
+    background-color: rgba(0, 100, 255, 0.7);
+    color: white;
+    float: right;
+}
+
+.delete-dlg-delete-btn:hover {
+    background-color: rgba(0, 100, 255, 0.99);
+    color: white;
+}
+
+.delete-dlg-delete-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 @media (max-width: 650px) {

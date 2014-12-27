@@ -340,6 +340,75 @@ var BuildView = Backbone.View.extend({
 var BuildListView = Backbone.View.extend({
     el: $('#build-list'),
     
+    showDeleteDialog: function () {
+        var $overlay = $('.modal-overlay'),
+            $dlg = $('.delete-dlg'),
+            $list = $('.delete-dlg-list'),
+            $deleteBtn = $('.delete-dlg-delete-btn');
+        
+        $overlay.show();
+        $dlg.show();
+        
+        var btnHandler = function (e) {
+            $dlg.find('.btn').off('click', btnHandler);
+            $dlg.hide();
+            $overlay.hide();
+            document.body.classList.remove('no-scroll');
+            
+            if (e.target.text === 'Cancel') {
+                return;
+            }
+            
+            var itemsToRemove = [];
+            $('.delete-dlg-list-item').forEach(function (item, idx) {
+                if (item.classList.contains('selected')) {
+                    itemsToRemove.push(idx);
+                }
+            });
+            if (itemsToRemove.length) {
+                itemsToRemove.reverse();
+                
+                itemsToRemove.forEach(function (item) {
+                    this.collection.remove(this.collection.at(item));
+                }.bind(this));
+                
+                this.render();
+            }
+        }.bind(this);
+        
+        var updateButtonState = function () {
+            $deleteBtn.addClass('disabled');
+            $('.delete-dlg-list-item').forEach(function (item) {
+                if (item.classList.contains('selected')) {
+                    $deleteBtn.removeClass('disabled');
+                }
+            });
+        };
+        
+        $dlg.find('.btn').on('click', btnHandler);
+        
+        $list.html('');
+        this.collection.forEach(function (item) {
+            var label = item.get('name');
+            
+            label += ' <span class="delete-item-desc">(' +
+                getLabel(item.get('wheelSize')) + '", ' +
+                getLabel(item.get('rings')) + ', ' +
+                getLabel(item.get('sprockets')) + ')</span>';
+            
+            $('<li>')
+                .addClass('delete-dlg-list-item')
+                .html(label)
+                .click(function (e) {
+                    $(e.target).toggleClass('selected');
+                    updateButtonState();
+                })
+                .appendTo($list);
+        });
+        
+        document.body.classList.add('no-scroll');
+        updateButtonState();
+    },
     render: function () {
         this.$el.html('');
         
@@ -352,6 +421,7 @@ var BuildListView = Backbone.View.extend({
             .html('New Build')
             .addClass('btn')
             .addClass('text-shadow')
+            .addClass('action-btn')
             .addClass('btn-new-build')
             .click(function () {
                 this.collection.add(new Build());
@@ -359,6 +429,17 @@ var BuildListView = Backbone.View.extend({
                 sendGAEvent('build', 'create');
             }.bind(this))
             .appendTo(this.$el);
+        
+        $('<a>')
+            .html('Delete...')
+            .addClass('btn')
+            .addClass('text-shadow')
+            .addClass('action-btn')
+            .addClass('btn-delete-build')
+            .click(function () {
+                this.showDeleteDialog();
+            }.bind(this))
+            .appendTo(this.$el);              
     }
 });
 
