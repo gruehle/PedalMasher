@@ -310,6 +310,17 @@ input[type=text].dropdown-input:focus {
     margin: auto;
 }
 
+.units-container {
+    margin-top: 1em;
+}
+
+.units-radio {
+    position: relative;
+    top: -0.2em;
+    margin-right: .4em;
+    margin-left: .8em;
+}
+
 .build {
     position: relative;
     width: 100%;
@@ -453,6 +464,10 @@ input[type=text].dropdown-input:focus {
     
     .config {
         top: 7px;
+    }
+    
+    .units-radio {
+        top: -.1em;
     }
 }
 

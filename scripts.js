@@ -43,6 +43,8 @@ var presets = {
     'sp9_12_36': [12, 14, 16, 18, 21, 24, 28, 32, 36]
 };
 
+var units = 'feet';
+
 var configs = [
     {
         name: 'Standard 2x10',
@@ -304,9 +306,12 @@ var TableView = Backbone.View.extend({
                 var val = ring /sprocket;       // Ratio
                 var resolution = 1;
                 val *= (wheelSize * Math.PI);   // Convert to distance (inches)
-                val /= 12;                      // Convert to feet
-                //val /= 39.37;                   // Convert to meters
-                //resolution = 2;                 // Meters show 2 digits
+                if (units === 'feet') {
+                    val /= 12;                      // Convert to feet
+                } else {
+                    val /= 39.37;                   // Convert to meters
+                    resolution = 2;                 // Meters show 2 digits
+                }
                 data.push(val.toFixed(resolution));
             });
             this.$el.append(this._makeRow(ring, data));
@@ -486,7 +491,9 @@ var BuildListView = Backbone.View.extend({
             .click(function () {
                 this.showDeleteDialog();
             }.bind(this))
-            .appendTo(this.$el);              
+            .appendTo(this.$el);
+        
+        return this;
     }
 });
 
@@ -507,8 +514,32 @@ buildList.on('change add remove', function () {
     localStorage.setItem('configs', JSON.stringify(buildList));
 });
 
-new BuildListView({collection: buildList}).render();
+// Distance units
+var feetBtn = document.getElementById('feet'),
+    metersBtn = document.getElementById('meters');
 
+if (localStorage.getItem('units')) {
+    units = localStorage.getItem('units');
+}
+function updateDistanceButtons() {
+    feetBtn.checked = units === 'feet';
+    metersBtn.checked = units !== 'feet';
+}
+function distanceBtnClickHandler(e) {
+    var newUnits = e.target === feetBtn ? 'feet' : 'meters';
+    if (newUnits !== units) {
+        units = newUnits;
+        updateDistanceButtons();
+        buildListView.render();
+        localStorage.setItem('units', units);
+    }
+}
+feetBtn.addEventListener('click', distanceBtnClickHandler);
+metersBtn.addEventListener('click', distanceBtnClickHandler);
+updateDistanceButtons();
+
+var buildListView = new BuildListView({collection: buildList}).render();
+    
 // Resize handler to update footer positioning
 function handleResize(e) {
     var content = document.getElementById('content');
