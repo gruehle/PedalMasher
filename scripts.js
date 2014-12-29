@@ -532,6 +532,7 @@ function distanceBtnClickHandler(e) {
         updateDistanceButtons();
         buildListView.render();
         localStorage.setItem('units', units);
+        sendGAEvent('units', units);
     }
 }
 feetBtn.addEventListener('click', distanceBtnClickHandler);
@@ -553,3 +554,9 @@ handleResize();
 if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
     document.body.classList.add('ios');
 }
+
+// Global error handler to log uncaught exceptions
+window.onerror = function (msg, url, line) {
+    sendGAEvent('error', msg, url + ':' + line);
+}
+
