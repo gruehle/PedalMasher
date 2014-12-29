@@ -497,6 +497,7 @@ input[type=text].dropdown-input:focus {
     
     .logo {
         width: 33px;
+        height: 33px;
     }
     
     .config {
