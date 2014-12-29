@@ -104,16 +104,17 @@ input[type=radio] {
 
 input[type=radio] + label span {
     display: inline-block;
+    position: relative;
     width: 15px;
     height: 15px;
-    background-image: url(img/radio-bg.png);
-    background-repeat: no-repeat;
+    background-image: url(img/sprites.svg);
+    background-position-x: -400%;
     background-size: cover;
     margin: .03em .2em 0;
 }
 
 input[type=radio]:checked + label span {
-    background-position: -15px 0;
+    background-position-x: -500%;
 }
 
 .btn {
@@ -191,6 +192,12 @@ input[type=radio]:checked + label span {
 }
 
 /* COMPONENTS */
+.sprite {
+    display: inline-block;
+    background-image: url(img/sprites.svg);
+    background-size: cover;    
+}
+
 .bg-img {
     position: fixed;
     width: 100%;
@@ -300,6 +307,7 @@ input[type=text].dropdown-input:focus {
     position: relative;
     top: -6px;
     width: 43px;
+    height: 43px;
     margin-left: 15px;
 }
 

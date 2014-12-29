@@ -258,16 +258,15 @@ var DropDown = Backbone.View.extend({
     events: {
         'click': 'clickHandler'
     },
-    render: function () {
-        var imgSrc = this.opts.imgSrc;
-        
+    render: function () {        
         this.$el.html('');
         
-        if (imgSrc) {
-            $('<img>')
+        if (this.opts.imgIndex) {
+            $('<div>')
+                .addClass('sprite')
                 .addClass('drop-down-btn-img')
                 .addClass('semi-trans')
-                .attr('src', imgSrc)
+                .css({backgroundPosition: '-' + this.opts.imgIndex + '00%'})
                 .appendTo(this.$el);
         }
         $('<span>')
@@ -331,7 +330,7 @@ var BuildView = Backbone.View.extend({
         this.wheelDropdown = new DropDown({
             template: 'wheel-dropdown',
             width: '3.95em',
-            imgSrc: 'img/wheel.svg'
+            imgIndex: 1
         }).on('change', function () {
             this.model.set('wheelSize', this.wheelDropdown.opts.value);
             this.render();
@@ -340,7 +339,7 @@ var BuildView = Backbone.View.extend({
         this.ringDropdown = new DropDown({
             template: 'ring-dropdown',
             width: '21em',
-            imgSrc: 'img/ring.svg'
+            imgIndex: 2
         }).on('change', function () {
             this.model.set('rings', this.ringDropdown.opts.value);
             this.render();
@@ -349,7 +348,7 @@ var BuildView = Backbone.View.extend({
         this.sprocketDropdown = new DropDown({
             template: 'sprocket-dropdown',
             width: '22em',
-            imgSrc: 'img/sprocket.svg'
+            imgIndex: 3
         }).on('change', function () {
             this.model.set('sprockets', this.sprocketDropdown.opts.value);
             this.render();
