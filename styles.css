@@ -98,6 +98,24 @@ input[type=text]:focus {
     box-shadow: 0 0 3px 1px rgba(0, 126, 255, 0.7), inset 0 0 3px rgba(0, 126, 255, 0.7);
 }
 
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio] + label span {
+    display: inline-block;
+    width: .8em;
+    height: .8em;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    margin: .03em .2em 0;
+}
+
+input[type=radio]:checked + label span {
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 35%, rgba(255,255,255,0.89) 40%, rgba(255,255,255,0.8) 100%);
+}
+
 .btn {
     display: inline-block;
     text-align: center;
