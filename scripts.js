@@ -84,7 +84,7 @@ function getLabel(value) {
 }
 
 function sendGAEvent(category, action, label) {
-    ga('send', 'event', category, action, label);
+    ga('send', 'event', category, action, label || 'none');
 }
 
 // MODELS
@@ -422,6 +422,7 @@ var BuildListView = Backbone.View.extend({
                 
                 itemsToRemove.forEach(function (item) {
                     this.collection.remove(this.collection.at(item));
+                    sendGAEvent('build', 'delete', item.name);
                 }.bind(this));
                 
                 this.render();
@@ -554,9 +555,3 @@ handleResize();
 if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
     document.body.classList.add('ios');
 }
-
-// Global error handler to log uncaught exceptions
-window.onerror = function (msg, url, line) {
-    sendGAEvent('error', msg, url + ':' + line);
-}
-

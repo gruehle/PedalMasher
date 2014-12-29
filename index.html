@@ -161,6 +161,10 @@
 
           ga('create', 'UA-39900246-3', 'auto');
           ga('send', 'pageview');
+
+          window.onerror = function (msg, url, line) {
+            ga('send', 'event', 'error', msg, url + ':' + line);
+          }
         </script>
         <script src="vendor/zepto-min.js"></script>
         <script src="vendor/underscore-min.js"></script>
