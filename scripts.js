@@ -498,7 +498,6 @@ var BuildListView = Backbone.View.extend({
 });
 
 // Make build models and views
-sendGAEvent('progress', '1');
 var buildList = new BuildList();
 var items = configs;
 if (localStorage.getItem('configs')) {
@@ -508,7 +507,6 @@ if (localStorage.getItem('configs')) {
         // Ignore errors. Will fall back to default configs.
     }
 }
-sendGAEvent('progress', '2');
 items.forEach(function (config) {
     buildList.add(new Build(config));
 });
@@ -519,7 +517,6 @@ buildList.on('change add remove', function () {
 // Distance units
 var feetBtn = document.getElementById('feet'),
     metersBtn = document.getElementById('meters');
-sendGAEvent('progress', '3');
 
 if (localStorage.getItem('units')) {
     units = localStorage.getItem('units');
@@ -541,19 +538,14 @@ function distanceBtnClickHandler(e) {
 feetBtn.addEventListener('click', distanceBtnClickHandler);
 metersBtn.addEventListener('click', distanceBtnClickHandler);
 updateDistanceButtons();
-sendGAEvent('progress', '4');
 
 var buildListView = new BuildListView({collection: buildList}).render();
-
-sendGAEvent('progress', '5');
 
 // Resize handler to update footer positioning
 function handleResize(e) {
     var content = document.getElementById('content');
     content.style.minHeight = (window.innerHeight - content.getBoundingClientRect().top) + 'px';
 }
-
-sendGAEvent('progress', '6');
 
 window.addEventListener('resize', _.debounce(handleResize, 100));
 handleResize();
@@ -562,5 +554,3 @@ handleResize();
 if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
     document.body.classList.add('ios');
 }
-
-sendGAEvent('progress', '7');
