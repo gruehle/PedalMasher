@@ -266,7 +266,7 @@ var DropDown = Backbone.View.extend({
                 .addClass('sprite')
                 .addClass('drop-down-btn-img')
                 .addClass('semi-trans')
-                .css({backgroundPosition: '-' + this.opts.imgIndex + '00%'})
+                .css({backgroundPosition: '-' + this.opts.imgIndex + '00% 0'})
                 .appendTo(this.$el);
         }
         $('<span>')

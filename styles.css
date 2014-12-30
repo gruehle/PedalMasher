@@ -108,13 +108,13 @@ input[type=radio] + label span {
     width: 15px;
     height: 15px;
     background-image: url(img/sprites.svg);
-    background-position-x: -400%;
+    background-position: -400% 0;
     background-size: cover;
     margin: .03em .2em 0;
 }
 
 input[type=radio]:checked + label span {
-    background-position-x: -500%;
+    background-position: -500% 0;
 }
 
 .btn {
