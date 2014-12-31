@@ -105,8 +105,9 @@ input[type=radio] {
 input[type=radio] + label span {
     display: inline-block;
     position: relative;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
+    top: 1px;
     background-image: url(img/sprites.svg);
     background-position: -400% 0;
     background-size: cover;
@@ -351,6 +352,8 @@ input[type=text].dropdown-input:focus {
     background: transparent;
     outline: none;
     padding: 0;
+    width: 8.5em;
+    text-overflow: ellipsis;
 }
 
 .config {
