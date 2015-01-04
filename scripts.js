@@ -550,6 +550,10 @@ function handleResize(e) {
 window.addEventListener('resize', _.debounce(handleResize, 100));
 handleResize();
 
+$('.link').click(function (e) {
+    sendGAEvent('link', 'clicked', e.target.innerHTML);
+});
+
 // iOS detection
 if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
     document.body.classList.add('ios');
