@@ -166,6 +166,10 @@ input[type=radio]:checked + label span {
     cursor: pointer;
 }
 
+.link {
+    color: rgba(0, 126, 255, 0.7);
+}
+
 /* LAYOUT */
 .col1 {
     width: 100%;
@@ -326,7 +330,7 @@ input[type=text].dropdown-input:focus {
 }
 
 .content {
-    margin: 0 1em 2.7em;
+    margin: 0 1em 3.7em;
     border-radius: 8px;
     padding: 10px;
 }
@@ -390,7 +394,7 @@ input[type=text].dropdown-input:focus {
     background-color: rgba(0, 0, 0, 0.3);
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.8em;
-    padding: 0.5em 2em;
+    padding: .5em 2em;
 }
 
 .copyright {
@@ -536,6 +540,10 @@ input[type=text].dropdown-input:focus {
     
     .content {
         margin: 0 .5em 3.5em;
+    }
+    
+    .footer {
+        padding: .5em .5em;
     }
 }
 
