@@ -154,6 +154,10 @@ input[type=radio]:checked + label span {
     opacity: 0.6;
 }
 
+.small {
+    font-size: 0.8em;
+}
+
 .text-shadow {
     text-shadow: 0 1px rgba(255, 255, 255, 0.4);
 }
@@ -393,7 +397,6 @@ input[type=text].dropdown-input:focus {
     
     background-color: rgba(0, 0, 0, 0.3);
     color: rgba(255, 255, 255, 0.6);
-    font-size: 0.8em;
     padding: .5em 2em;
 }
 
@@ -419,7 +422,7 @@ input[type=text].dropdown-input:focus {
 
 .delete-dlg {
     display: none;
-    position: fixed;;
+    position: fixed;
     left: 0;
     right: 0;
     width: 22em;
