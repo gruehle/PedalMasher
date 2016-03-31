@@ -200,6 +200,11 @@ input[type=radio]:checked + label span {
     min-width: 10px;
 }
 
+.col12 {
+    width: 7.42%;
+    min-width: 10px;
+}
+
 /* COMPONENTS */
 .sprite {
     display: inline-block;
