@@ -293,10 +293,12 @@ var DropDown = Backbone.View.extend({
 var TableView = Backbone.View.extend({
     tagName: 'table',
     
-    _makeRow: function (firstItem, data, isHeader) {
+    _makeRow: function (numRings, firstItem, data, isHeader) {
         var $row = $('<tr>');
         
-        $row.append($('<th>').html(firstItem));
+        if (numRings > 1) {
+            $row.append($('<th>').html(firstItem));
+        }
         
         data.forEach(function (item) {
             $row.append($(isHeader ? '<th>' : '<td>').html(item));
@@ -307,10 +309,11 @@ var TableView = Backbone.View.extend({
     render: function () {
         var sprockets   = this.model.get('sprockets').slice().reverse(),
             rings       = this.model.get('rings'),
-            wheelSize   = this.model.get('wheelSize');
+            wheelSize   = this.model.get('wheelSize'),
+            numRings    = rings.length;
         
         this.$el = $('<table>');
-        this.$el.append(this._makeRow('', sprockets, true));
+        this.$el.append(this._makeRow(numRings, '', sprockets, true));
         
         rings.forEach(function (ring) {
             var data = [];
@@ -326,7 +329,7 @@ var TableView = Backbone.View.extend({
                 }
                 data.push(val.toFixed(resolution));
             });
-            this.$el.append(this._makeRow(ring, data));
+            this.$el.append(this._makeRow(numRings, ring, data));
         }.bind(this));
         
         return this;
