@@ -7,6 +7,7 @@ var presets = {
     // Wheel 
     wheel_26: 26,
     wheel_275: 27.5,
+    wheel_2825: 28.25,
     wheel_29: 29,
     
     // Single Ring
@@ -85,6 +86,11 @@ function getLabel(value) {
         return result;
     }
     
+    // 27.5 plus
+    if (value === 28.25) {
+      return '27.5+';
+    }
+
     return value;
 }
 

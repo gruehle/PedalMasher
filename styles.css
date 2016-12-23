@@ -296,6 +296,11 @@ input[type=radio]:checked + label span {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.dropdown-item.col1 {
+    text-align: left;
+    text-indent: 15px;
+}
+
 .dropdown-item-title {
     padding-left: 7px;
     font-size: 1.5em;
