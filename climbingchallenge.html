@@ -9,96 +9,84 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles.css">
     <style>
+      em {
+        font-weight: 600;
+        color: #6ad36a;
+      }
       #progress {
+        margin-top: 1em;
         width: 100%;
         text-align: center;
       }
       #progress-header {
-        font-size: 0.7em;
+        font-size: 0.8em;
       }
       #progress-feet {
         font-size: 1.3em;
       }
       #progress-bar-bg {
-        margin: 12px 10%;
-        height: 16px;
+        margin: 1em 10%;
+        height: 0.8em;
         background-color: lightgray;
         position: relative;
       }
       #progress-bar {
         height: 100%;
         width: 0;
-        background-color: #6fd66f;
+        background-color: #6ad36a;
       }
       #today-mark {
         position: absolute;
-        top: -2px;
-        height: 20px;
+        top: -0.1em;
+        height: 1em;
         width: 1px;
         background-color: black;
       }
       
       #body-text {
-        margin: 12px 5%;
+        margin: 1em 5%;
       }
     </style>
   </head>
   <body>
     <div id='progress'>
       <div id='progress-header'>THIS YEAR</div>
-      <div id='progress-feet'></div>
+      <div id='progress-feet'> </div>
       <div id='progress-bar-bg'>
         <div id='progress-bar'></div>
         <div id='today-mark'></div>
       </div>
-      <div id='progress-text'>DOIN' GOOD!</div>
+      <div id='progress-text'> </div>
     </div>
     
     <div id='body-text'>
       One million feet of climbing requires an average of:
       <ul>
         <li>2,740 feet per day</li>
-        <li>19,230 feet per week</li>
-        <li>83,333 feet per month</li>
+        <li>19,231 feet per week</li>
+        <li>83,334 feet per month</li>
       </ul>
     </div>
     
     <script language="javascript">
-      function metersToFeet(meters) {
-        return meters * 39.37 / 12;
-      }
-
-      function getCurrentDay() {
-        const now = new Date();
-        if (now.getFullYear() > 2018) return 365; // Only tracking 2018
-        const start = new Date(now.getFullYear(), 0, 0);
-        const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-        const oneDay = 1000 * 60 * 60 * 24;
-        return Math.floor(diff / oneDay); 
-      }
-      
-      function formatNumber(number) {
-        return number.toLocaleString();
-      }
-      
       function showData(data) {        
         const year_goal = 1000000;
-        const current_day = getCurrentDay();
+        const now = new Date();
+        const current_day = (Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(now.getFullYear(), 0, 0)) / (24 * 60 * 60 * 1000);
         const current_target = Math.floor(year_goal * (current_day / 365));
-        const current_actual = Math.floor(metersToFeet(data.ytd_ride_totals.elevation_gain));
+        const current_actual = Math.floor(data.ytd_ride_totals.elevation_gain * 3.28084);  // Totals are in meters
         
-        //console.log('current target: ' + current_target);
-        //console.log('feet climbed: ' + current_actual);
+        var fmt = num => num.toLocaleString();
         
-        document.getElementById('progress-feet').innerHTML = formatNumber(current_actual) + ' / ' + formatNumber(year_goal) + ' ft';
+        document.getElementById('progress-feet').innerHTML = '<em>' + fmt(current_actual) +'</em> / ' + fmt(year_goal) + ' ft';
         document.getElementById('progress-bar').style.width = ((current_actual * 100) / year_goal) + '%';
         document.getElementById('today-mark').style.left = ((current_target * 100) / year_goal) + '%';
         
         var progressText;
         if (current_actual >= current_target) {
-          progressText = formatNumber(current_actual - current_target) + ' ft ahead of pace';
+          progressText = fmt(current_actual - current_target) + ' ft ahead of pace';
         } else {
-          progressText = formatNumber(current_target - current_actual) + ' ft behind pace';
+          progressText = fmt(current_target - current_actual) + ' ft behind pace';
         }
         document.getElementById('progress-text').innerHTML = progressText;
       }
