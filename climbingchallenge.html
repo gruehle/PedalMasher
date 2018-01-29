@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>One. Million. Feet.</title>
+    <title>2018 Climbing Challenge</title>
 
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
@@ -13,9 +13,20 @@
         font-weight: 600;
         color: #6ad36a;
       }
+      .content-area {
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        margin: 1em;
+        padding: 0.75em;
+      }
+      #header {
+        text-align: center;
+        font-size: 1.7em;
+        color: #ffffff;
+        margin-top: 0.3em;
+      }
       #progress {
-        margin-top: 1em;
-        width: 100%;
         text-align: center;
       }
       #progress-header {
@@ -44,13 +55,19 @@
       }
       
       #body-text {
-        margin: 1em 5%;
       }
     </style>
   </head>
   <body>
-    <div id='progress'>
-      <div id='progress-header'>THIS YEAR</div>
+    <!-- Background -->
+    <div class="bg-img lucas-valley-img"></div>
+    
+    <!-- Header -->
+    <div id='header'>2018 Climbing Challenge: One Million Feet</div>
+    
+    <!-- Progress -->
+    <div id='progress' class='content-area'>
+      <div id='progress-header'>PROGRESS</div>
       <div id='progress-feet'> </div>
       <div id='progress-bar-bg'>
         <div id='progress-bar'></div>
@@ -59,7 +76,8 @@
       <div id='progress-text'> </div>
     </div>
     
-    <div id='body-text'>
+    <!-- Body -->
+    <div id='body-text' class='content-area'>
       One million feet of climbing requires an average of:
       <ul>
         <li>2,740 feet per day</li>
@@ -68,6 +86,7 @@
       </ul>
     </div>
     
+    <!-- Scripts -->
     <script language="javascript">
       function showData(data) {        
         const year_goal = 1000000;
