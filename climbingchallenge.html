@@ -14,7 +14,7 @@
         color: #6ad36a;
       }
       .content-area {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.90);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
         margin: 1em;
@@ -22,9 +22,9 @@
       }
       #header {
         text-align: center;
-        font-size: 1.7em;
-        color: #ffffff;
+        font-size: 1.5em;
         margin-top: 0.3em;
+        margin-bottom: 0.5em;
       }
       #progress {
         text-align: center;
@@ -36,7 +36,7 @@
         font-size: 1.3em;
       }
       #progress-bar-bg {
-        margin: 1em 10%;
+        margin: 0.5em 10%;
         height: 0.8em;
         background-color: lightgray;
         position: relative;
@@ -54,37 +54,73 @@
         background-color: black;
       }
       
-      #body-text {
+      .body-text {
+        text-align: left;
+      }
+      
+      .date {
+        margin-top: 1em;
+        font-size: 0.8em;
+        font-weight: 400;
       }
     </style>
   </head>
   <body>
     <!-- Background -->
     <div class="bg-img lucas-valley-img"></div>
-    
+        
     <!-- Header -->
-    <div id='header'>2018 Climbing Challenge: One Million Feet</div>
-    
-    <!-- Progress -->
     <div id='progress' class='content-area'>
-      <div id='progress-header'>PROGRESS</div>
+     <div id='header'>Glenn's 2018 Climbing Challenge</div>
+     <div id='progress-header'>PROGRESS</div>
       <div id='progress-feet'> </div>
       <div id='progress-bar-bg'>
         <div id='progress-bar'></div>
         <div id='today-mark'></div>
       </div>
       <div id='progress-text'> </div>
+      <br/>
+      <div class='body-text'>
+        This is the year! I've come close to 1 million feet of climbing for the past
+        3 years - 807,927 (2015), 820,299 (2016), and 880,344 (2017). It's time to finally
+        hit the big goal.<br/><br/>
+        
+        I'm grateful to live in an area with beautiful weather and plenty of hills to climb. Most 
+        of my riding is on a mountain bike, but I did get my first road bike last summer, so there will be road 
+        miles sprinkled in. Even though climbing will be a major focus this year, I still prioritize
+        having fun and enjoying every ride.<br/><br/>
+        
+        For those wondering what it takes to climb 1 million feet, it requires an average of:
+        <ul>
+          <li>2,740 feet per day</li>
+          <li>19,231 feet per week</li>
+          <li>83,334 feet per month</li>
+        </ul>
+        I plan on riding 5-6 days a week, with about two weeks off for vacation. That works out to about
+        275 rides for the year. I need to average 3636 feet of climbing, per ride, to hit the goal.
+        Wish me luck! <br/><br/>Follow me on Strava if you'd like to track my progress.
+        <br/><br/>
+        <div style="text-align: center">
+          <a style="display:inline-block;background-color:#FC4C02;color:#fff;padding:5px 10px 5px 30px;font-size:11px;font-family:Helvetica, Arial, sans-serif;white-space:nowrap;text-decoration:none;background-repeat:no-repeat;background-position:10px center;border-radius:3px;background-image:url('http://badges.strava.com/logo-strava-echelon.png')" href='http://strava.com/athletes/188506/badge' target="_clean">
+            Follow me on
+            <img src='http://badges.strava.com/logo-strava.png' alt='Strava' style='margin-left:2px;vertical-align:text-bottom' height=13 width=51 />
+          </a>
+        </div>
+      </div>
     </div>
     
-    <!-- Body -->
+    <!-- Body
     <div id='body-text' class='content-area'>
-      One million feet of climbing requires an average of:
-      <ul>
-        <li>2,740 feet per day</li>
-        <li>19,231 feet per week</li>
-        <li>83,334 feet per month</li>
-      </ul>
+      <h2>Updates</h2>
+      <div class='date'>31-Jan-2018</div>
+      <div>
+        One month in. Highlights of the month include:
+        <ul>
+          <li>A</li>
+        </ul>
+      </div>
     </div>
+    -->
     
     <!-- Scripts -->
     <script language="javascript">
@@ -92,8 +128,10 @@
         const year_goal = 1000000;
         const now = new Date();
         const current_day = (Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(now.getFullYear(), 0, 0)) / (24 * 60 * 60 * 1000);
-        const current_target = Math.floor(year_goal * (current_day / 365));
-        const current_actual = Math.floor(data.ytd_ride_totals.elevation_gain * 3.28084);  // Totals are in meters
+        const current_target = Math.round(year_goal * (current_day / 365));
+        const current_actual = Math.round(data.ytd_ride_totals.elevation_gain * 3.28084);  // Totals are in meters
+        const est_finish = new Date('January 1, 2018 00:00:00');
+        est_finish.setDate(year_goal / (current_actual / current_day));
         
         var fmt = num => num.toLocaleString();
         
@@ -107,6 +145,8 @@
         } else {
           progressText = fmt(current_target - current_actual) + ' ft behind pace';
         }
+        progressText += '(estimated finish: ' + est_finish.toLocaleDateString() + ')';
+        
         document.getElementById('progress-text').innerHTML = progressText;
       }
        
