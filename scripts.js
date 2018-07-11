@@ -326,7 +326,7 @@ var TableView = Backbone.View.extend({
         rings.forEach(function (ring) {
             var data = [];
             sprockets.forEach(function (sprocket) {
-                var val = ring /sprocket;       // Ratio
+                var val = ring / sprocket;      // Ratio
                 var resolution = 1;
                 val *= (wheelSize * Math.PI);   // Convert to distance (inches)
                 if (units === 'feet') {
