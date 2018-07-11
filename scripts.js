@@ -30,12 +30,14 @@ var presets = {
     'triple_24_42': [24, 32, 42],
     
     // 12 Speed Sprockets
+    'sp12_10_45': [10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 40, 45],
     'sp12_10_50': [10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42, 50],
+    'sp12_10_51': [10, 12, 14, 16, 18, 21, 24, 28, 33, 39, 45, 51],
 
     // 11 Speed Sprockets
-    'sp11_09_44': [9, 10, 12, 14, 17, 20, 24, 28, 32, 38, 44],
     'sp11_09_46': [9, 10, 12, 14, 17, 20, 24, 28, 33, 39, 46],
     'sp11_10_42': [10, 12, 14, 16, 18, 21, 24, 28, 32, 36, 42],
+    'sp11_10_45': [10, 12, 14, 16, 18, 21, 24, 28, 33, 39, 45],
     'sp11_11_40': [11, 13, 15, 17, 19, 21, 24, 27, 31, 35, 40],
     'sp11_11_42': [11, 13, 15, 17, 19, 21, 24, 28, 32, 37, 42],
     'sp11_11_46': [11, 13, 15, 17, 19, 21, 24, 28, 32, 37, 46],
@@ -55,16 +57,22 @@ var units = 'feet';
 
 var configs = [
     {
-        name: 'Standard 2x10',
-        wheelSize: 29,
-        rings: presets.double_24_38,
-        sprockets: presets.sp10_11_36
-    },
-    {
         name: 'SRAM 1x11',
         wheelSize: 29,
         rings: presets.single_30,
         sprockets: presets.sp11_10_42
+    },
+    {
+        name: 'SRAM Eagle',
+        wheelSize: 29,
+        rings: presets.single_32,
+        sprockets: presets.sp12_10_50
+    },
+    {
+        name: 'XTR 12 Speed',
+        wheelSize: 29,
+        rings: presets.single_32,
+        sprockets: presets.sp12_10_51
     }
 ];
 
