@@ -132,7 +132,7 @@
         var fmt = num => num.toLocaleString();
         
         document.getElementById('progress-feet').innerHTML = '<em>' + fmt(current_actual) +'</em> / ' + fmt(year_goal) + ' ft';
-        document.getElementById('progress-bar').style.width = ((current_actual * 100) / year_goal) + '%';
+        document.getElementById('progress-bar').style.width = Math.min(100, ((current_actual * 100) / year_goal)) + '%';
         document.getElementById('today-mark').style.left = ((current_target * 100) / year_goal) + '%';
         
         var progressText;

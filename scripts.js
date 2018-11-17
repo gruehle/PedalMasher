@@ -113,8 +113,8 @@ var Build = Backbone.Model.extend({
     defaults: {
         name: "My Build",
         wheelSize: 29,
-        rings: presets.double_24_38,
-        sprockets: presets.sp10_11_36
+        rings: presets.single_32,
+        sprockets: presets.sp12_10_50
     }
 });
 
