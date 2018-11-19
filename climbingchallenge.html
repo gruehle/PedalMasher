@@ -22,6 +22,9 @@
         font-weight: 600;
         color: #6ad36a;
       }
+      b {
+        font-weight: 400;
+      }
       .content-area {
         background-color: rgba(255, 255, 255, 0.90);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -90,7 +93,7 @@
       <div id='progress-text'> </div>
       <br/>
       <div class='body-text'>
-        This is the year! I've come close to 1 million feet of climbing for the past
+        This is the year. I've come close to 1 million feet of climbing for the past
         3 years - 807,927 (2015), 820,299 (2016), and 880,344 (2017). It's time to finally
         hit the big goal.<br/><br/>
         
@@ -141,7 +144,10 @@
         } else {
           progressText = fmt(current_target - current_actual) + ' ft behind pace';
         }
+        /*
         progressText += '<br/>At this pace I\'ll finish on ' + est_finish.toLocaleDateString();
+        */
+        progressText += '<br/><b>Challenge completed on ' + new Date('November 18, 2018 00:00:00').toLocaleDateString() + '!</b>';
         
         document.getElementById('progress-text').innerHTML = progressText;
       }
