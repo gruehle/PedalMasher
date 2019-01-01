@@ -125,12 +125,17 @@
     <script language="javascript">
       function showData(data) {        
         const year_goal = 1000000;
+        /*
         const now = new Date();
         const current_day = (Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - Date.UTC(now.getFullYear(), 0, 0)) / (24 * 60 * 60 * 1000);
         const current_target = Math.round(year_goal * (current_day / 365));
         const current_actual = Math.round(data.ytd_ride_totals.elevation_gain * 3.28084);  // Totals are in meters
         const est_finish = new Date('January 1, 2018 00:00:00');
         est_finish.setDate(year_goal / (current_actual / current_day));
+        */
+        const current_target = 1000000;
+        const current_day = 364;
+        const current_actual = 1100666;
         
         var fmt = num => num.toLocaleString();
         
@@ -139,15 +144,15 @@
         document.getElementById('today-mark').style.left = ((current_target * 100) / year_goal) + '%';
         
         var progressText;
+        /*
         if (current_actual >= current_target) {
           progressText = fmt(current_actual - current_target) + ' ft ahead of pace';
         } else {
           progressText = fmt(current_target - current_actual) + ' ft behind pace';
         }
-        /*
         progressText += '<br/>At this pace I\'ll finish on ' + est_finish.toLocaleDateString();
         */
-        progressText += '<br/><b>Challenge completed on ' + new Date('November 18, 2018 00:00:00').toLocaleDateString() + '!</b>';
+        progressText = '<br/><b>Challenge completed on ' + new Date('November 18, 2018 00:00:00').toLocaleDateString() + '!</b>';
         
         document.getElementById('progress-text').innerHTML = progressText;
       }
